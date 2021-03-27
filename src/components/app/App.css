@@ -1,0 +1,32 @@
+.app {
+    max-width: 1000px;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+.header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    background-color: rgb(60,63,65);
+}
+.header-item {
+    /*background-color: #fff;*/
+    /*border: 3px solid black;*/
+}
+.header-logo {
+    grid-column: 1 / 2;
+    font-size: 18px;
+    font-weight: bold;
+}
+.header-links {
+    justify-self: center;
+    grid-column: 2 / 4;
+}
+.header-links__link {
+    font-family: "Segoe UI", Verdana, Consolas;
+}
+.header-links__link + .header-links__link {
+    margin-left: 10px;
+}

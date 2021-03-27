@@ -1,0 +1,45 @@
+.user-message {
+    display: grid;
+    grid-template-columns: minmax(50px, 80px) 3fr 4fr 24px 24px;
+    grid-template-rows: 1fr minmax(1fr, max-content);
+    background-color: rgb(60,60,60);
+    grid-gap: 15px 0px;
+    padding: 10px;
+    border-radius: 4px;
+}
+.user-message + .user-message {
+    margin-top: 15px;
+}
+.user-message__name {
+    grid-column: 2 / 3;
+    text-decoration: underline;
+    overflow: visible;
+}
+.user-message__elem {
+    cursor: pointer;
+    padding-top: 2px;
+}
+.user-message__remove {
+    margin-right: 10px;
+    grid-column: 6 / 6;
+    grid-row: 1 / 2;
+}
+.user-message__remove:hover {
+    color: rgb(160, 60, 60);
+}
+.user-message__edit {
+    grid-column: 7 / 7;
+    grid-row: 1 / 2;
+}
+.user-message__edit:hover {
+    color: rgb(80, 140, 200);
+}
+.user-message__time {
+    grid-column: 3 / 4;
+    justify-self: end;
+}
+.user-message__message {
+    grid-column: 2 / 4;
+    word-break: break-all;
+    padding: 0px 15px 0px 0px;
+}
