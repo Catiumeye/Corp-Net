@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react'
+import React, {  } from 'react'
 import { Route, Link, Switch, Redirect } from "react-router-dom";
 import './App.css';
 
-import FloodChat from "../flood-chat";
-import WorkingChat from "../woking-chat";
+import FloodChat from "../floodChat";
+import WorkingChat from "../workingChat";
 import Home from "../home";
 
 const App = () => {
-    useEffect(() => {
-        
-    }, [])
+
     return (
         <div className='app'>
             <header className='header'>

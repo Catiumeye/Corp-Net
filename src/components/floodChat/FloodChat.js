@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import UserMessage from "../user-message";
-import InputMessage from "../input-message";
+import UserMessage from "../userMessage";
+import InputMessage from "../inputMessage";
 import { useSelector, useDispatch } from "react-redux";
 import vdv from '../../floodMessages.json'
 
@@ -13,7 +13,7 @@ const FloodChat = () => {
     }, [dispatch])
 
     const MessageList = () => msgList.map(item => {
-        return <UserMessage key={item.id} {...item}/>
+        return <UserMessage key={item.id} {...item} chat='flood'/>
     })
 
     return(

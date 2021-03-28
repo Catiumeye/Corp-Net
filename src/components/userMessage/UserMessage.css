@@ -40,6 +40,7 @@
 }
 .user-message__message {
     grid-column: 2 / 4;
-    word-break: break-all;
+    /*word-break: break-all;*/
+
     padding: 0px 15px 0px 0px;
 }
