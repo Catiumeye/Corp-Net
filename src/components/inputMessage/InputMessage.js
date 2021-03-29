@@ -1,11 +1,12 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 const InputMessage = ({chat}) => {
-    const needToEdit = useSelector((state) => state.mainReducer.needToEdit)
+    const needToEdit = useSelector((state) => state.mainReducer.needToEditFlood);
+    const editingModeFlood = useSelector(state => state.mainReducer.editingModeFlood)
     const dispatch = useDispatch();
     const inp = useRef();
-    const [editingMode, setEditingMode] = useState(false)
+
 
     useEffect(() => {
         if (needToEdit) {
@@ -18,7 +19,11 @@ const InputMessage = ({chat}) => {
         const date = new Date();
         let payloadDate = `${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
 
-        if (chat === 'flood' && inp.current.value) {
+        if (chat === 'flood' && inp.current.value && editingModeFlood) {
+            dispatch({type: 'EDIT_MESSAGE_FLOOD_2',
+                payload: {id: needToEdit[0], newMsgFlood: inp.current.value}})
+        }
+        if (chat === 'flood' && inp.current.value && !editingModeFlood) {
             dispatch({type: 'ADD_NEW_MESSAGE_FLOOD',
                 payload: {
                     id: date.getTime(),
@@ -26,7 +31,7 @@ const InputMessage = ({chat}) => {
                     time: payloadDate,
                     messageText: inp.current.value }})
         }
-        if (chat === 'work' && inp.current.value) {
+        if (chat === 'work' && inp.current.value && !editingModeFlood) {
             dispatch({type: 'ADD_NEW_MESSAGE_WORK',
                 payload: {
                     id: date.getTime(),
