@@ -1,6 +1,7 @@
 import React, {} from "react";
 import './UserMessage.css';
 import {useDispatch} from "react-redux";
+import {editMessageFlood1, editMessageWork1, removeMessageFlood, removeMessageWork} from "../../actions";
 
 const UserMessage = ({id, name, time, messageText, chat}) => {
     const dispatch = useDispatch();
@@ -8,10 +9,10 @@ const UserMessage = ({id, name, time, messageText, chat}) => {
     const removeMessage = () => {
         switch (chat) {
             case 'flood':
-                dispatch({type: 'REMOVE_MESSAGE_FLOOD', payload: id});
+                dispatch(removeMessageFlood(id));
                 break;
             case 'work':
-                dispatch({type: 'REMOVE_MESSAGE_WORK', payload: id});
+                dispatch(removeMessageWork(id));
                 break;
             default:
                 console.log('UserMessage(removeMessage) - has error');
@@ -20,10 +21,10 @@ const UserMessage = ({id, name, time, messageText, chat}) => {
     const editMessage = () => {
         switch (chat) {
             case 'flood':
-                dispatch({type: 'EDIT_MESSAGE_FLOOD_1', payload: id});
+                dispatch(editMessageFlood1(id));
                 break;
             case 'work':
-                dispatch({type: 'EDIT_MESSAGE_WORK_1', payload: id});
+                dispatch(editMessageWork1(id));
                 break;
             default:
                 console.log('UserMessage(editMessage) - has error');

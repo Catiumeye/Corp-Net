@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {addNewMessageFlood, addNewMessageWork, editMessageFlood2, editMessageWork2} from "../../actions";
 
 const InputMessage = ({chat}) => {
     const needToEditFlood = useSelector((state) => state.floodReducer.needToEditFlood);
@@ -8,8 +9,6 @@ const InputMessage = ({chat}) => {
     const editingModeWork = useSelector(state => state.workReducer.editingModeWork)
     const dispatch = useDispatch();
     const inp = useRef();
-
-    console.log(editingModeWork)
 
     useEffect(() => {
         if (chat === 'flood') {
@@ -30,28 +29,16 @@ const InputMessage = ({chat}) => {
         let payloadDate = `${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
 
         if (chat === 'flood' && inp.current.value && editingModeFlood) {
-            dispatch({type: 'EDIT_MESSAGE_FLOOD_2',
-                payload: {id: needToEditFlood[0], newMsgFlood: inp.current.value}})
+            dispatch(editMessageFlood2(needToEditFlood[0], inp.current.value))
         }
         if (chat === 'flood' && inp.current.value && !editingModeFlood) {
-            dispatch({type: 'ADD_NEW_MESSAGE_FLOOD',
-                payload: {
-                    id: date.getTime(),
-                    name: 'VALERA VDV',
-                    time: payloadDate,
-                    messageText: inp.current.value }})
+            dispatch(addNewMessageFlood(date.getTime(), payloadDate, inp.current.value))
         }
         if (chat === 'work' && inp.current.value && editingModeWork) {
-            dispatch({type: 'EDIT_MESSAGE_WORK_2',
-                payload: {id: needToEditWork[0], newMsgWork: inp.current.value}})
+            dispatch(editMessageWork2(needToEditWork[0], inp.current.value))
         }
         if (chat === 'work' && inp.current.value && !editingModeWork) {
-            dispatch({type: 'ADD_NEW_MESSAGE_WORK',
-                payload: {
-                    id: date.getTime(),
-                    name: 'Геннадий Урич',
-                    time: payloadDate,
-                    messageText: inp.current.value }})
+            dispatch(addNewMessageWork(date.getTime(), payloadDate, inp.current.value))
         }
         inp.current.value = null;
     }
