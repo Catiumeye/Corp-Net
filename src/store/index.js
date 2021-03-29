@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import {mainReducer} from "../reducers/mainReducer";
+import {floodReducer} from "./floodReducer";
+import {workReducer} from "./workReducer";
 
 
 const rootReducer = combineReducers({
-    mainReducer
+    floodReducer,
+    workReducer
 })
 
 export const store = createStore(rootReducer, composeWithDevTools())

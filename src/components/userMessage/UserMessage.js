@@ -23,12 +23,11 @@ const UserMessage = ({id, name, time, messageText, chat}) => {
                 dispatch({type: 'EDIT_MESSAGE_FLOOD_1', payload: id});
                 break;
             case 'work':
-                dispatch({type: 'EDIT_MESSAGE_WORK', payload: id});
+                dispatch({type: 'EDIT_MESSAGE_WORK_1', payload: id});
                 break;
             default:
                 console.log('UserMessage(editMessage) - has error');
         }
-
     }
 
     return(

@@ -1,13 +1,13 @@
 import React, {useEffect} from "react";
 import InputMessage from "../inputMessage";
 import UserMessage from "../userMessage";
-import vdv from '../../workMessages.json';
+import vdv from '../../messageData/workMessages.json';
 import {useDispatch, useSelector} from "react-redux";
 
 
-const WorkingChat = () => {
+const WorkChat = () => {
     const dispatch = useDispatch();
-    const msgList =  useSelector((state) => state.mainReducer.messagesWork);
+    const msgList =  useSelector((state) => state.workReducer.messagesWork);
 
     useEffect(() => {
         dispatch({type: 'MAKE_STATE_FOR_WORK', payload: vdv});
@@ -25,4 +25,4 @@ const WorkingChat = () => {
     )
 }
 
-export default WorkingChat;
+export default WorkChat;

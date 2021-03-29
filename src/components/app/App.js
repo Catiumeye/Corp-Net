@@ -3,7 +3,7 @@ import { Route, Link, Switch, Redirect } from "react-router-dom";
 import './App.css';
 
 import FloodChat from "../floodChat";
-import WorkingChat from "../workingChat";
+import WorkChat from "../workChat";
 import Home from "../home";
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
             <Switch>
                 <Route exact path='/home' component={Home}/>
                 <Route exact path='/flood' component={FloodChat}/>
-                <Route exact path='/work' component={WorkingChat}/>
+                <Route exact path='/work' component={WorkChat}/>
                 <Redirect from='/' to='/home'/>
             </Switch>
         </div>
