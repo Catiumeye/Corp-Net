@@ -1,6 +1,6 @@
 const initialState = {
     messagesFlood: [],
-    needToEditFlood: [null, null], /* первый аргумент id, второй текст для редактирования */
+    needToEditFlood: [null, ''], /* первый аргумент id, второй текст для редактирования */
     editingModeFlood: false
 }
 
@@ -31,7 +31,7 @@ export const floodReducer = (state = initialState, action) => {
                 }
                 return item
             })
-            return {...state, needToEditFlood: [null, null], messagesFlood: zaVDV, editingModeFlood: false}
+            return {...state, needToEditFlood: [null, ''], messagesFlood: zaVDV, editingModeFlood: false}
 
 
         case 'REMOVE_MESSAGE_FLOOD':

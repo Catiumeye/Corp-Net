@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addNewMessageFlood, addNewMessageWork, editMessageFlood2, editMessageWork2} from "../../actions";
 
@@ -8,18 +8,15 @@ const InputMessage = ({chat}) => {
     const editingModeFlood = useSelector(state => state.floodReducer.editingModeFlood)
     const editingModeWork = useSelector(state => state.workReducer.editingModeWork)
     const dispatch = useDispatch();
-    const inp = useRef();
+
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
-        if (chat === 'flood') {
-            if (needToEditFlood !== false) {
-                inp.current.value = needToEditFlood[1]
-            }
+        if (chat === 'flood' && needToEditFlood !== false) {
+            setMessage(needToEditFlood[1]);
         }
-        if (chat === 'work') {
-            if (needToEditWork) {
-                inp.current.value = needToEditWork[1]
-            }
+        if (chat === 'work' && needToEditWork) {
+            setMessage(needToEditWork[1]);
         }
     }, [needToEditFlood, needToEditWork, chat])
 
@@ -28,24 +25,25 @@ const InputMessage = ({chat}) => {
         const date = new Date();
         let payloadDate = `${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
 
-        if (chat === 'flood' && inp.current.value && editingModeFlood) {
-            dispatch(editMessageFlood2(needToEditFlood[0], inp.current.value))
+        if (chat === 'flood' && message && editingModeFlood) {
+            dispatch(editMessageFlood2(needToEditFlood[0], message))
         }
-        if (chat === 'flood' && inp.current.value && !editingModeFlood) {
-            dispatch(addNewMessageFlood(date.getTime(), payloadDate, inp.current.value))
+        if (chat === 'flood' && message && !editingModeFlood) {
+            dispatch(addNewMessageFlood(date.getTime(), payloadDate, message))
         }
-        if (chat === 'work' && inp.current.value && editingModeWork) {
-            dispatch(editMessageWork2(needToEditWork[0], inp.current.value))
+        if (chat === 'work' && message && editingModeWork) {
+            dispatch(editMessageWork2(needToEditWork[0], message))
         }
-        if (chat === 'work' && inp.current.value && !editingModeWork) {
-            dispatch(addNewMessageWork(date.getTime(), payloadDate, inp.current.value))
+        if (chat === 'work' && message && !editingModeWork) {
+            dispatch(addNewMessageWork(date.getTime(), payloadDate, message))
         }
-        inp.current.value = null;
+        setMessage('')
     }
 
     return (
             <form className='form-message' onSubmit={formSubmit}>
-                <input className='form-message__input' type="text" ref={inp}/>
+                <input className='form-message__input' type="text"
+                       value={message} onChange={(e) => setMessage(e.target.value)}/>
                 <input className='form-message__submit' type="submit"/>
             </form>
     )

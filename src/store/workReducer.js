@@ -1,6 +1,6 @@
 const initialState = {
     messagesWork: [],
-    needToEditWork: [null, null], /* первый аргумент id, второй текст для редактирования */
+    needToEditWork: [null, ''], /* первый аргумент id, второй текст для редактирования */
     editingModeWork: false
 }
 
@@ -31,7 +31,7 @@ export const workReducer = (state = initialState, action) => {
                 }
                 return item
             })
-            return {...state, needToEditWork: [null, null], messagesWork: zaDVD, editingModeWork: false}
+            return {...state, needToEditWork: [null, ''], messagesWork: zaDVD, editingModeWork: false}
 
         case 'REMOVE_MESSAGE_WORK':
             const newMsgWork = state.messagesWork.filter((item) => item.id !== action.payload)

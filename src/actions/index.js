@@ -1,6 +1,4 @@
 //Flood
-import vdv from "../messageData/workMessages.json";
-
 const makeStateForFlood = (payload) => {
     return {type: 'MAKE_STATE_FOR_FLOOD', payload}
 }
