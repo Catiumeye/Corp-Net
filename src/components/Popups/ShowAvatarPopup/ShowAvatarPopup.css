@@ -1,0 +1,19 @@
+.show-avatar-popup {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    left: 0;
+    top: 0;
+}
+.show-avatar-popup__avatar {
+    margin: 0 auto;
+    border: 5px solid gray;
+    max-width: 600px;
+    max-height: 600px;
+    display: flex;
+    justify-items: center;
+    background-color: rgb(43,43,43);
+}
+.show-avatar-popup__avatar > img {
+    margin: 0 auto;
+}

@@ -43,6 +43,11 @@ const editMessageWork2 = (id, newMsgWork) => {
         payload: {id, newMsgWork}}
 }
 
+//Popups
+const actionShowAvatarPopup = () => {
+    return {type: 'SHOW_AVATAR_POPUP_CHANGE'}
+}
+
 export {
     makeStateForFlood,
     addNewMessageFlood,
@@ -53,5 +58,6 @@ export {
     addNewMessageWork,
     removeMessageWork,
     editMessageWork1,
-    editMessageWork2
+    editMessageWork2,
+    actionShowAvatarPopup
 }
