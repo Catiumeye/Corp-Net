@@ -21,7 +21,7 @@ const ShowAvatarPopup = () => {
     }, [])
 
     return (
-        <div className='show-avatar-popup' onClick={hideAvatarPopup}>
+        <div className='popup-full show-avatar-popup' onClick={hideAvatarPopup}>
             <div className='show-avatar-popup__avatar'>
                 <img src={avatar} alt="vdv"/>
             </div>

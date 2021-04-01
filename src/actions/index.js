@@ -47,6 +47,9 @@ const editMessageWork2 = (id, newMsgWork) => {
 const actionShowAvatarPopup = () => {
     return {type: 'SHOW_AVATAR_POPUP_CHANGE'}
 }
+const actionShowConnectAccountPopup = () => {
+    return {type: 'SHOW_CONNECT_ACCOUNT_POPUP_CHANGE'};
+}
 
 export {
     makeStateForFlood,
@@ -59,5 +62,6 @@ export {
     removeMessageWork,
     editMessageWork1,
     editMessageWork2,
-    actionShowAvatarPopup
+    actionShowAvatarPopup,
+    actionShowConnectAccountPopup
 }

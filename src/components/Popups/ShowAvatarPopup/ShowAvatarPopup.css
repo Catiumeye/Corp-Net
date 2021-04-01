@@ -1,11 +1,8 @@
 .show-avatar-popup {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    left: 0;
-    top: 0;
+
 }
 .show-avatar-popup__avatar {
+    animation: vdv 1s ease 1;
     margin: 0 auto;
     border: 5px solid gray;
     max-width: 600px;
@@ -16,4 +13,13 @@
 }
 .show-avatar-popup__avatar > img {
     margin: 0 auto;
+}
+
+@keyframes vdv {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

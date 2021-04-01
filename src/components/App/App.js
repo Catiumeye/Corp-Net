@@ -8,10 +8,11 @@ import FloodChat from "../FloodChat";
 import WorkChat from "../WorkChat";
 import Home from "../Home";
 import {useSelector} from "react-redux";
+import {ConnectAccountPopup} from "../Popups/ConnectAccountPopup";
 
 const App = () => {
     const showAvatarPopup = useSelector((state) => state.userReducer.showAvatarPopup);
-
+    const showConnectAccountPopup = useSelector((state => state.userReducer.showConnectAccountPopup));
     return (
         <div className='app'>
             <Header />
@@ -23,6 +24,7 @@ const App = () => {
             </Switch>
 
             {showAvatarPopup && <ShowAvatarPopup/>}
+            {showConnectAccountPopup && <ConnectAccountPopup/>}
         </div>
     );
 }
