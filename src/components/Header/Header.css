@@ -31,6 +31,7 @@
     grid-template-rows: repeat(2, 30px);
     grid-column: 4 / 5;
     align-items: center;
+    overflow: hidden;
 }
 .user-account__avatar{
     width: 50px;

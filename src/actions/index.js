@@ -51,6 +51,11 @@ const actionShowConnectAccountPopup = () => {
     return {type: 'SHOW_CONNECT_ACCOUNT_POPUP_CHANGE'};
 }
 
+//Account
+const addUser = (id, name, password, status) => {
+    return {type: 'ADD_USER', payload: {id, name, password, status}}
+}
+
 export {
     makeStateForFlood,
     addNewMessageFlood,
@@ -63,5 +68,6 @@ export {
     editMessageWork1,
     editMessageWork2,
     actionShowAvatarPopup,
-    actionShowConnectAccountPopup
+    actionShowConnectAccountPopup,
+    addUser
 }

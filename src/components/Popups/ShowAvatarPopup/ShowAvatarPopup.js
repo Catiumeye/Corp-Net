@@ -8,7 +8,9 @@ const ShowAvatarPopup = () => {
     const dispatch = useDispatch();
 
     const hideAvatarPopup = (e) => {
-        dispatch(actionShowAvatarPopup());
+        if (e.target.className.includes('popup-full')) {
+            dispatch(actionShowAvatarPopup());
+        }
     }
 
     useEffect(() => {

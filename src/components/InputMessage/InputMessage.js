@@ -23,7 +23,8 @@ const InputMessage = ({chat}) => {
     const formSubmit = (e) => {
         e.preventDefault();
         const date = new Date();
-        let payloadDate = `${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+        let payloadDate = `${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+        
 
         if (chat === 'flood' && message && editingModeFlood) {
             dispatch(editMessageFlood2(needToEditFlood[0], message))

@@ -1,3 +1,16 @@
 .connect-account-popup {
     background-color: rgba(43, 43, 43, 0.5);
 }
+.account-popup {
+    background-color: black;
+    display: grid;
+    height: 400px;
+    min-width: 250px;
+    max-width: 350px;
+    text-align: center;
+}
+.account-form {
+    display: flex;
+    flex-direction: column;
+}
+

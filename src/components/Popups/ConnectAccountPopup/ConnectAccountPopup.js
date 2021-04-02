@@ -1,18 +1,32 @@
-import React, {useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import './ConnectAccountPopup.css'
-import {useDispatch} from "react-redux";
-import {actionShowConnectAccountPopup} from "../../../actions";
+import {useDispatch, useSelector} from "react-redux";
+import {actionShowConnectAccountPopup, addUser} from "../../../actions";
 
 const ConnectAccountPopup = () => {
     const dispatch = useDispatch();
+    const [name, setName] = useState('');
+    const [pass, setPass] = useState('');
 
-    const hideConnectAccount = () => {
-        dispatch(actionShowConnectAccountPopup())
+    const userData = useSelector((state) => state.userReducer.userList);
+    console.log(userData)
+    const hideConnectAccount = (e) => {
+        if (e.target.className.includes('popup-full')) {
+            dispatch(actionShowConnectAccountPopup());
+        }
+
     }
     const accountSubmit = (e) => {
         e.preventDefault();
-    }
+        if (name && pass) {
+            const date = new Date();
+            const id = date.getTime();
 
+            dispatch(addUser(id, name, pass, 'user'));
+        }
+        setName('');
+        setPass('');
+    }
 
     useEffect(() => {
         const body = document.querySelector('body');
@@ -25,15 +39,18 @@ const ConnectAccountPopup = () => {
 
     return (
         <div className='popup-full' onClick={hideConnectAccount}>
-            <div className='connect-account-popup'>
-                <div className=''>
-                    <form onSubmit={accountSubmit}>
-                        <input type="text"/>
-                        <input type="password"/>
-                        <input type="submit"/>
+            <div className='account-popup'>
+                <div className='account-connect'>
+                    <form className='account-form' onSubmit={accountSubmit}>
+                        <h3>Создать аккаунт</h3>
+                        <input type="text" onChange={(e) => setName(e.target.value)} value={name}
+                               placeholder='name'/>
+                        <input type="password" onChange={(e) => setPass(e.target.value)} value={pass}
+                               placeholder='password'/>
+                        <input type="submit" value='Create account'/>
                     </form>
                 </div>
-                <div>
+                <div className='account-list'>
                     <h3>Existing accounts</h3>
                 </div>
             </div>
