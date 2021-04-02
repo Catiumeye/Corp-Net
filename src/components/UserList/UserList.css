@@ -1,0 +1,13 @@
+.users-view {
+    display: flex;
+    flex-direction: column;
+
+}
+.users-view__item {
+    background-color: rgb(60,60,60);
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.users-view__item + .users-view__item {
+    margin-top: 10px;
+}

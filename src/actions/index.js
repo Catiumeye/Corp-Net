@@ -2,11 +2,11 @@
 const makeStateForFlood = (payload) => {
     return {type: 'MAKE_STATE_FOR_FLOOD', payload}
 }
-const addNewMessageFlood = (id, payloadDate, messageText) => {
+const addNewMessageFlood = (id, payloadDate, messageText, name) => {
     return {type: 'ADD_NEW_MESSAGE_FLOOD',
         payload: {
             id,
-            name: 'VALERA VDV',
+            name,
             time: payloadDate,
             messageText }}
 }
@@ -24,11 +24,11 @@ const editMessageFlood2 = (id, newMsgFlood) => {
 const makeStateForWork = (vdv) => {
     return {type: 'MAKE_STATE_FOR_WORK', payload: vdv}
 }
-const addNewMessageWork = (id, payloadDate, messageText) => {
+const addNewMessageWork = (id, payloadDate, messageText, name) => {
     return {type: 'ADD_NEW_MESSAGE_WORK',
         payload: {
             id,
-            name: 'Геннадий Урич',
+            name,
             time: payloadDate,
             messageText}}
 }
@@ -55,6 +55,9 @@ const actionShowConnectAccountPopup = () => {
 const addUser = (id, name, password, status) => {
     return {type: 'ADD_USER', payload: {id, name, password, status}}
 }
+const switchUser = (id) => {
+    return {type: 'SWITCH_USER', payload: id}
+}
 
 export {
     makeStateForFlood,
@@ -69,5 +72,6 @@ export {
     editMessageWork2,
     actionShowAvatarPopup,
     actionShowConnectAccountPopup,
-    addUser
+    addUser,
+    switchUser
 }

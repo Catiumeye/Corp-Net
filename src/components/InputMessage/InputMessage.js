@@ -7,6 +7,8 @@ const InputMessage = ({chat}) => {
     const needToEditWork = useSelector((state) => state.workReducer.needToEditWork);
     const editingModeFlood = useSelector(state => state.floodReducer.editingModeFlood)
     const editingModeWork = useSelector(state => state.workReducer.editingModeWork)
+    const currentUser = useSelector((state) => state.userReducer.selectedUser);
+
     const dispatch = useDispatch();
 
     const [message, setMessage] = useState('');
@@ -30,13 +32,13 @@ const InputMessage = ({chat}) => {
             dispatch(editMessageFlood2(needToEditFlood[0], message))
         }
         if (chat === 'flood' && message && !editingModeFlood) {
-            dispatch(addNewMessageFlood(date.getTime(), payloadDate, message))
+            dispatch(addNewMessageFlood(date.getTime(), payloadDate, message, currentUser.name))
         }
         if (chat === 'work' && message && editingModeWork) {
             dispatch(editMessageWork2(needToEditWork[0], message))
         }
         if (chat === 'work' && message && !editingModeWork) {
-            dispatch(addNewMessageWork(date.getTime(), payloadDate, message))
+            dispatch(addNewMessageWork(date.getTime(), payloadDate, message, currentUser.name))
         }
         setMessage('')
     }

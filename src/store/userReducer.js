@@ -1,6 +1,6 @@
 const initialState = {
-    userList: [],
-    selectedUser: {id: null, name: null, password: null, status: 'guest'},
+    userList: [{id: 228, name: 'Пажылая Мафпа', password: 54, status: 'user'}],
+    selectedUser: {id: 228, name: 'Пажылая Мафпа', password: 54, status: 'user'},
     showAvatarPopup: false,
     showConnectAccountPopup: false
 }
@@ -17,6 +17,15 @@ export const userReducer = (state = initialState, action) => {
 
         case 'ADD_USER':
             return {...state, userList: [...state.userList, action.payload]}
+
+        case 'SWITCH_USER':
+            let switchNewUser = null;
+            state.userList.forEach(item => {
+                if (item.id === action.payload) {
+                    switchNewUser = item;
+                }
+            })
+            return {...state, selectedUser: switchNewUser}
         default:
             return state;
     }

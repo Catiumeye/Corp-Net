@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import './ConnectAccountPopup.css'
 import {useDispatch, useSelector} from "react-redux";
 import {actionShowConnectAccountPopup, addUser} from "../../../actions";
+import {UserList} from "../../UserList";
 
 const ConnectAccountPopup = () => {
     const dispatch = useDispatch();
@@ -9,7 +10,7 @@ const ConnectAccountPopup = () => {
     const [pass, setPass] = useState('');
 
     const userData = useSelector((state) => state.userReducer.userList);
-    console.log(userData)
+    console.log(useSelector(state => state.userReducer.selectedUser))
     const hideConnectAccount = (e) => {
         if (e.target.className.includes('popup-full')) {
             dispatch(actionShowConnectAccountPopup());
@@ -42,7 +43,7 @@ const ConnectAccountPopup = () => {
             <div className='account-popup'>
                 <div className='account-connect'>
                     <form className='account-form' onSubmit={accountSubmit}>
-                        <h3>Создать аккаунт</h3>
+                        <h3>Create account</h3>
                         <input type="text" onChange={(e) => setName(e.target.value)} value={name}
                                placeholder='name'/>
                         <input type="password" onChange={(e) => setPass(e.target.value)} value={pass}
@@ -52,6 +53,7 @@ const ConnectAccountPopup = () => {
                 </div>
                 <div className='account-list'>
                     <h3>Existing accounts</h3>
+                    <UserList />
                 </div>
             </div>
         </div>

@@ -3,10 +3,11 @@ import React from "react";
 import './Header.css';
 import avatar from '../../img/OldWolf.jpg';
 import {actionShowAvatarPopup, actionShowConnectAccountPopup} from "../../actions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 const Header = () => {
     const dispatch = useDispatch();
+    const currentUser = useSelector((state) => state.userReducer.selectedUser);
     const showAvatarPopup = () => {
         dispatch(actionShowAvatarPopup());
     }
@@ -24,7 +25,7 @@ const Header = () => {
             <div className='header-item user-account'>
                 <img className='user-account__avatar' src={avatar} alt="vdv"
                     onClick={showAvatarPopup}/>
-                <div className='user-account__name'>Валера Жмых</div>
+                <div className='user-account__name'>{currentUser.name}</div>
                 <div className='user-account__switch' onClick={showAccountPopup}>Change user</div>
             </div>
         </header>
